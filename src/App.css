@@ -34,7 +34,7 @@ form input[type="button"]:hover {
 form .display {
   display: flex;
   justify-content: flex-end;
-  align-items: center; /* Added alignment */
+  align-items: center;
   margin: 5px 0px 15px 0px;
 }
 
@@ -44,8 +44,14 @@ form .display input {
   font-size: 40px;
   padding: 5px 10px;
   background-color: rgb(80, 77, 77);
-  border: none; /* Removed border */
+  border: none; 
   color: white;
   border-radius: 10px;
-  height: 60px; /* Added height */
+  height: 60px; 
+}
+form input[value="CLR"] {
+  width: calc(100% - 132px); 
+}
+form input[value="="] {
+  width: calc(100% - 132px);
 }
