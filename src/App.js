@@ -6,13 +6,13 @@ function App() {
 
     const handleButtonClick = (buttonValue) => {
         if (value === '0' && buttonValue !== '.') {
-            // If display is '0', replace it with the new input value
+       
             setValue(buttonValue);
         } else if (buttonValue === 'CLR') {
-            // Clear the display
+
             setValue('');
         } else if (buttonValue === 'EQ') {
-            // Evaluate the expression
+            
             try {
                 const result = eval(value);
                 setValue(result.toString());
@@ -20,7 +20,7 @@ function App() {
                 setValue('Error');
             }
         } else {
-            // Append the button value to the display
+           
             setValue(value + buttonValue);
         }
     };
