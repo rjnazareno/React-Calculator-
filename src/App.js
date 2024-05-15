@@ -4,24 +4,24 @@ import './App.css';
 function App() {
     const [value, setValue] = useState('');
 
-    const handleButtonClick = (input) => {
-        if (input === 'CLR') {
+    const handleButtonClick = (buttonValue) => {
+        if (value === '0' && buttonValue !== '.') {
+            // If display is '0', replace it with the new input value
+            setValue(buttonValue);
+        } else if (buttonValue === 'CLR') {
+            // Clear the display
             setValue('');
-        } else if (input === '=') {
+        } else if (buttonValue === 'EQ') {
+            // Evaluate the expression
             try {
-                setValue(eval(value).toString());
+                const result = eval(value);
+                setValue(result.toString());
             } catch (error) {
                 setValue('Error');
             }
-        } else if (input === '*' || input === '/' || input === '+' || input === '-') {
-            setValue(prevValue => prevValue + input);
         } else {
-            
-            if (value === '0' && input !== '00' && input !== '.') {
-                setValue(input);
-            } else {
-                setValue(prevValue => prevValue + input);
-            }
+            // Append the button value to the display
+            setValue(value + buttonValue);
         }
     };
 
@@ -33,32 +33,31 @@ function App() {
                         <input type="text" value={value} readOnly />
                     </div>
                     <div>
-                        <input type="button" value="CLR" onClick={() => handleButtonClick('CLR')} />
-                        <input type="button" value="DE" onClick={() => setValue(value.slice(0, -1))} />
-                        <input type="button" value="/" onClick={() => handleButtonClick(' / ')} />
+                
                     </div>
                     <div>
                         <input type="button" value="7" onClick={() => handleButtonClick('7')} />
                         <input type="button" value="8" onClick={() => handleButtonClick('8')} />
                         <input type="button" value="9" onClick={() => handleButtonClick('9')} />
-                        <input type="button" value="*" onClick={() => handleButtonClick(' * ')} />
+                        <input type="button" value="MUL" onClick={() => handleButtonClick(' * ')} />
                     </div>
                     <div>
                         <input type="button" value="4" onClick={() => handleButtonClick('4')} />
                         <input type="button" value="5" onClick={() => handleButtonClick('5')} />
                         <input type="button" value="6" onClick={() => handleButtonClick('6')} />
-                        <input type="button" value="-" onClick={() => handleButtonClick(' - ')} />
+                        <input type="button" value="SUB" onClick={() => handleButtonClick(' - ')} />
                     </div>
                     <div>
                         <input type="button" value="1" onClick={() => handleButtonClick('1')} />
                         <input type="button" value="2" onClick={() => handleButtonClick('2')} />
                         <input type="button" value="3" onClick={() => handleButtonClick('3')} />
-                        <input type="button" value="+" onClick={() => handleButtonClick(' + ')} />
+                        <input type="button" value="ADD" onClick={() => handleButtonClick(' + ')} />
                     </div>
                     <div>
-                        <input type="button" value="." onClick={() => handleButtonClick('.')} />
+                        <input type="button" value="CLR" onClick={() => handleButtonClick('CLR')} />
                         <input type="button" value="0" onClick={() => handleButtonClick('0')} />
-                        <input type="button" value="=" className='equal' onClick={() => handleButtonClick('=')} />
+                        <input type="button" value="DIV" onClick={() => handleButtonClick(' / ')} />
+                        <input type="button" value="EQ" className='EQ' onClick={() => handleButtonClick('EQ')} />
                     </div>
                 </form>
             </div>

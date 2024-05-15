@@ -50,7 +50,7 @@ form .display input {
   height: 60px; 
 }
 form input[value="CLR"] {
-  width: calc(100% - 132px); 
+  width: calc(100% - 196px); 
 }
 form input[value="="] {
   width: calc(100% - 132px);
